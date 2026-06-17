@@ -3,22 +3,27 @@ import { useRef, useState } from "react";
 export default function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
+  const musicSrc = `${import.meta.env.BASE_URL}music/love.mp3`;
 
-  const toggle = () => {
+  const toggle = async () => {
     if (!audioRef.current) return;
 
     if (playing) {
       audioRef.current.pause();
+      setPlaying(false);
     } else {
-      audioRef.current.play();
+      try {
+        await audioRef.current.play();
+        setPlaying(true);
+      } catch (error) {
+        console.error("Could not play background music:", error);
+      }
     }
-
-    setPlaying(!playing);
   };
 
   return (
     <>
-      <audio ref={audioRef} loop src="/public/music/love.mp3" />
+      <audio ref={audioRef} loop src={musicSrc} />
 
       <button
         onClick={toggle}
