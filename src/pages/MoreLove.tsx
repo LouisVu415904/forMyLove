@@ -41,14 +41,7 @@ export default function MoreLove({ next }: Props) {
     <PageWrapper>
       <h1>Em có muốn được anh thương nhiều hơn không? 💙</h1>
 
-      <div
-        style={{
-          display: "flex",
-          gap: "24px",
-          marginTop: "30px",
-          alignItems: "center",
-        }}
-      >
+      <div className="more-love-buttons">
         <button
           onClick={next}
           style={{

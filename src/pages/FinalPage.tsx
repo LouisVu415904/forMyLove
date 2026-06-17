@@ -23,7 +23,11 @@ export default function FinalPage({ next }: Props) {
           stiffness: 120,
         }}
       >
-        <h1>💙 Vợ iu Quỳnh Như ơi 💙</h1>
+        <h1 className="final-title">
+          <span>💙</span>
+          <span>Vợ iu Quỳnh Như ơi</span>
+          <span>💙</span>
+        </h1>
       </motion.div>
 
       <p>Anh thương em.</p>
@@ -38,6 +42,7 @@ export default function FinalPage({ next }: Props) {
         onClick={celebrate}
         style={{
           marginTop: "20px",
+          marginRight: "12px",
         }}
       >
         Ôm anh một cái 🤗
@@ -45,6 +50,7 @@ export default function FinalPage({ next }: Props) {
       <button
         style={{
           marginTop: 16,
+          marginLeft: 12,
         }}
         onClick={next}
       >

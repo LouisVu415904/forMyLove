@@ -26,13 +26,30 @@ const reasons = [
   "Vì em làm trái tim anh mềm hơn mỗi ngày 💕",
   "Vì em xuất hiện và cuộc sống anh thú vị hơn rất nhiều 🎈",
   "Vì thật lòng mà nói... anh thích mọi thứ thuộc về em 💙",
+  "Vì giọng nói của em nghe một cái là anh thấy ngày dịu lại 🎧",
+  "Vì em có cách quan tâm rất riêng làm anh nhớ mãi 🌙",
+  "Vì ở cạnh em, mấy chuyện bình thường cũng thành kỷ niệm ✨",
+  "Vì em vừa dễ thương vừa làm anh muốn cố gắng tốt hơn 🌱",
+  "Vì nụ cười của em có khả năng chữa lành hơi bị mạnh 🫶",
+  "Vì em làm anh mong chờ những cuộc trò chuyện nhỏ xíu mỗi ngày 💬",
+  "Vì em đáng yêu ngay cả khi em đang giận dỗi một chút 😳",
+  "Vì em khiến anh thấy thương một người có thể nhẹ nhàng đến vậy 🤍",
+  "Vì chỉ cần nghĩ tới em thôi anh cũng tự nhiên mỉm cười 🌷",
+  "Vì em là phần đặc biệt nhất trong ngày của anh 💎",
 ];
+
+const reasonCount = 15;
+
+function getRandomReasons() {
+  return [...reasons].sort(() => Math.random() - 0.5).slice(0, reasonCount);
+}
 
 export default function ReasonsPage({ next }: Props) {
   const [index, setIndex] = useState(0);
+  const [selectedReasons] = useState(getRandomReasons);
 
   const handleNext = () => {
-    if (index === reasons.length - 1) {
+    if (index === selectedReasons.length - 1) {
       next();
       return;
     }
@@ -44,12 +61,12 @@ export default function ReasonsPage({ next }: Props) {
     <PageWrapper>
       <h1>vô vàn lý do anh thích em 💙</h1>
 
-      <h2>{reasons[index]}</h2>
+      <h2>{selectedReasons[index]}</h2>
 
       <button onClick={handleNext}>Lý do tiếp theo →</button>
 
-      {index === reasons.length - 1 && (
-        <p>Thật ra anh không cần 100 lý do. Chỉ cần em là đủ 🥺</p>
+      {index === selectedReasons.length - 1 && (
+        <p>Thật ra anh không cần muôn vàn lý do. Chỉ cần em là đủ 🥺</p>
       )}
     </PageWrapper>
   );

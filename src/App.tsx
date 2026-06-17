@@ -15,6 +15,9 @@ import LoadingLove from "./pages/LoadingLove";
 import MusicPlayer from "./components/MusicPlayer";
 import HeartTrail from "./components/HeartTrail";
 import SecretEnding from "./pages/SecretEnding";
+import HeartCatchGame from "./pages/HeartCatchGame";
+import ComplimentRoulette from "./pages/ComplimentRoulette";
+import SecretNoteUnlock from "./pages/SecretNoteUnlock";
 function App() {
   const [page, setPage] = useState(0);
 
@@ -22,11 +25,14 @@ function App() {
     <Welcome next={() => setPage(1)} />,
     <CutieQuiz next={() => setPage(2)} />,
     <LoveMeter next={() => setPage(3)} />,
-    <MoreLove next={() => setPage(4)} />,
-    <ReasonsPage next={() => setPage(5)} />,
-    <GalleryPage next={() => setPage(6)} />,
-    <LoadingLove next={() => setPage(7)} />,
-    <FinalPage next={() => setPage(8)} />,
+    <HeartCatchGame next={() => setPage(4)} />,
+    <ComplimentRoulette next={() => setPage(5)} />,
+    <MoreLove next={() => setPage(6)} />,
+    <ReasonsPage next={() => setPage(7)} />,
+    <SecretNoteUnlock next={() => setPage(8)} />,
+    <GalleryPage next={() => setPage(9)} />,
+    <LoadingLove next={() => setPage(10)} />,
+    <FinalPage next={() => setPage(11)} />,
     <SecretEnding />,
   ];
   const totalPages = pages.length;
