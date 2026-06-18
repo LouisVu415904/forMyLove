@@ -14,17 +14,36 @@ const compliments = [
   "Nếu có bảng xếp hạng đáng yêu, em chắc chắn đứng đầu.",
   "Chỉ cần em xuất hiện là ngày tự nhiên sáng hơn một chút.",
   "Em là lý do rất hợp lý để anh cười một mình.",
+  "Em không cần hoàn hảo, vì phiên bản hiện tại đã đủ làm anh mê rồi.",
+  "Mỗi lần em vui, anh cũng thấy ngày của mình vui lây.",
+  "Em có tài biến một cuộc nói chuyện bình thường thành điều anh nhớ cả ngày.",
+  "Anh chưa tìm thấy nút tắt nhớ em, chắc nhà sản xuất quên làm.",
+  "Em chính là kiểu người càng quen càng thấy đáng yêu.",
+  "Nếu đáng yêu là một môn học, em chắc chắn được điểm tuyệt đối.",
+  "Em làm anh hiểu cảm giác có một người để mong chờ là như thế nào.",
+  "Có những ngày chẳng cần gì đặc biệt, chỉ cần được nói chuyện với em.",
+  "Em là thông báo duy nhất mà anh luôn muốn thấy xuất hiện.",
+  "Anh thích cách em làm mọi thứ xung quanh trở nên mềm mại hơn.",
+  "Chắc em không biết đâu, nhưng em thường xuyên làm anh mỉm cười đó.",
+  "Em có một sức hút rất kỳ lạ: càng nhìn càng thấy thương.",
+  "Khoảnh khắc đẹp nhất trong ngày thường là lúc có em trong đó.",
+  "Em giống như bài hát hay, nghe bao nhiêu lần cũng không thấy chán.",
+  "Ở cạnh em, anh thấy mình may mắn hơn bình thường rất nhiều.",
+  "Em là câu trả lời dễ thương nhất cho câu hỏi hôm nay có gì vui.",
 ];
 
 export default function ComplimentRoulette({ next }: Props) {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(() => Math.floor(Math.random() * compliments.length));
   const [spins, setSpins] = useState(0);
 
   const unlocked = spins >= 4;
   const currentCompliment = useMemo(() => compliments[index], [index]);
 
   const spin = () => {
-    setIndex((prev) => (prev + 1 + Math.floor(Math.random() * 4)) % compliments.length);
+    setIndex((prev) => {
+      const offset = 1 + Math.floor(Math.random() * (compliments.length - 1));
+      return (prev + offset) % compliments.length;
+    });
     setSpins((prev) => prev + 1);
   };
 

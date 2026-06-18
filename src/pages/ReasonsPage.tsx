@@ -36,6 +36,16 @@ const reasons = [
   "Vì em khiến anh thấy thương một người có thể nhẹ nhàng đến vậy 🤍",
   "Vì chỉ cần nghĩ tới em thôi anh cũng tự nhiên mỉm cười 🌷",
   "Vì em là phần đặc biệt nhất trong ngày của anh 💎",
+  "Vì em làm anh thấy những ngày bận rộn cũng đáng để cố gắng hơn 🌤️",
+  "Vì anh thích cách em kể cả những câu chuyện nhỏ nhất trong ngày 📖",
+  "Vì em khiến anh muốn lưu giữ thật nhiều khoảnh khắc cùng nhau 📸",
+  "Vì mỗi lần em gọi tên anh, tự nhiên anh thấy vui hơn một chút 🎶",
+  "Vì em là người anh luôn muốn chia sẻ cả niềm vui lẫn những lúc mệt mỏi 💌",
+  "Vì anh thích cả những điều ngốc nghếch và đáng yêu của em 😌",
+  "Vì em khiến hai chữ tương lai nghe có vẻ đáng mong chờ hơn 🌅",
+  "Vì anh luôn tò mò muốn biết hôm nay của em đã diễn ra thế nào ☁️",
+  "Vì chỉ cần em ở đó, mọi nơi đều có cảm giác gần gũi hơn 🏡",
+  "Vì càng hiểu em, anh lại càng tìm thấy thêm lý do để thương em 💙",
 ];
 
 const reasonCount = 15;

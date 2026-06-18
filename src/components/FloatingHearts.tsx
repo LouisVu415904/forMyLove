@@ -1,8 +1,17 @@
 import { motion } from "framer-motion";
 
-const hearts = Array.from({ length: 12 }, (_, i) => ({
+const floatingIcons = [
+  "💙",
+  "✨",
+  "🩷",
+  "🌷", // Thay icon thứ 4 tại đây
+  "💌", // Thay icon thứ 5 tại đây
+];
+
+const hearts = Array.from({ length: 20 }, (_, i) => ({
   id: i,
-  x: (i * 3.33) % 100,
+  icon: floatingIcons[i % floatingIcons.length],
+  x: 3 + ((i * 37) % 94),
   size: 16 + (i % 5) * 4,
   duration: 6 + (i % 7),
   delay: i * 0.3,
@@ -10,7 +19,7 @@ const hearts = Array.from({ length: 12 }, (_, i) => ({
 
 export default function FloatingHearts() {
   return (
-    <>
+    <div className="floating-icons" aria-hidden="true">
       {hearts.map((heart) => (
         <motion.div
           key={heart.id}
@@ -29,16 +38,13 @@ export default function FloatingHearts() {
             ease: "linear",
           }}
           style={{
-            position: "fixed",
             left: `${heart.x}%`,
             fontSize: `${heart.size}px`,
-            pointerEvents: "none",
-            zIndex: 1,
           }}
         >
-          💙✨
+          {heart.icon}
         </motion.div>
       ))}
-    </>
+    </div>
   );
 }

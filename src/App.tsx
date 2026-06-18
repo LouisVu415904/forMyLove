@@ -18,6 +18,7 @@ import SecretEnding from "./pages/SecretEnding";
 import HeartCatchGame from "./pages/HeartCatchGame";
 import ComplimentRoulette from "./pages/ComplimentRoulette";
 import SecretNoteUnlock from "./pages/SecretNoteUnlock";
+import MysteryGift from "./pages/MysteryGift";
 function App() {
   const [page, setPage] = useState(0);
 
@@ -31,8 +32,9 @@ function App() {
     <ReasonsPage next={() => setPage(7)} />,
     <SecretNoteUnlock next={() => setPage(8)} />,
     <GalleryPage next={() => setPage(9)} />,
-    <LoadingLove next={() => setPage(10)} />,
-    <FinalPage next={() => setPage(11)} />,
+    <MysteryGift next={() => setPage(10)} />,
+    <LoadingLove next={() => setPage(11)} />,
+    <FinalPage next={() => setPage(12)} />,
     <SecretEnding />,
   ];
   const totalPages = pages.length;

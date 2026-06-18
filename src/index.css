@@ -1,4 +1,9 @@
 :root {
+  --blue: #a5d1fa;
+  --blue-light: #cfe8ff;
+  --pink: #ffd6e7;
+  --white: #ffffff;
+
   font-family:
     Inter,
     system-ui,
@@ -27,10 +32,27 @@ body,
 body {
   background: linear-gradient(180deg,
       #f8fbff 0%,
-      #e8f4ff 50%,
+      #fff4f8 32%,
+      #e8f4ff 66%,
       #d9edff 100%);
 
   overflow-x: hidden;
+}
+
+.floating-icons {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-icons > div {
+  position: absolute;
+  top: 0;
+  pointer-events: none;
 }
 
 /* ---------- TYPOGRAPHY ---------- */
@@ -78,9 +100,10 @@ p {
 button {
   border: none;
 
-  background: linear-gradient(135deg,
-      #a5d1fa,
-      #cfe8ff);
+  background: linear-gradient(150deg,
+      var(--pink),
+      var(--white),
+      var(--blue));
 
   color: #24446f;
 
@@ -102,10 +125,48 @@ button:hover {
   transform: translateY(-3px);
 
   box-shadow:
-    0 10px 25px rgba(165,
-      209,
-      250,
-      0.4);
+    0 10px 25px rgba(165, 209, 250, 0.3),
+    0 8px 22px rgba(255, 214, 231, 0.45);
+}
+
+.music-player-drag-area {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  pointer-events: none;
+}
+
+.music-player-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  min-height: 52px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  font-size: 1.3rem;
+
+  cursor: grab;
+  pointer-events: auto;
+  touch-action: none;
+  user-select: none;
+}
+
+.music-player-button:active {
+  cursor: grabbing;
+}
+
+.music-player-button:hover {
+  transform: none;
 }
 
 .more-love-buttons {
@@ -141,7 +202,10 @@ button:hover {
   font-weight: 800;
 
   border-radius: 999px;
-  background: rgba(165, 209, 250, 0.5);
+  background: linear-gradient(135deg,
+      rgba(165, 209, 250, 0.55),
+      rgba(255, 214, 231, 0.65),
+      rgba(255, 255, 255, 0.85));
 }
 
 .heart-game-board {
@@ -157,6 +221,7 @@ button:hover {
   border: 2px solid rgba(165, 209, 250, 0.45);
   background:
     radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.95), transparent 28%),
+    radial-gradient(circle at 80% 75%, rgba(255, 214, 231, 0.75), transparent 30%),
     linear-gradient(135deg, rgba(207, 232, 255, 0.55), rgba(255, 255, 255, 0.8));
 }
 
@@ -262,7 +327,8 @@ button:hover {
 }
 
 .compliment-dots .is-active {
-  background: #5f8fd8;
+  background: var(--pink);
+  box-shadow: 0 0 0 2px #5f8fd8;
 }
 
 .note-grid {
@@ -281,7 +347,9 @@ button:hover {
   padding: 12px;
 
   border-radius: 18px;
-  background: rgba(165, 209, 250, 0.55);
+  background: linear-gradient(135deg,
+      rgba(165, 209, 250, 0.6),
+      rgba(255, 214, 231, 0.75));
 
   font-size: clamp(1rem, 3vw, 1.25rem);
 }
@@ -290,6 +358,52 @@ button:hover {
   color: #24446f;
   background: #ffffff;
   box-shadow: 0 12px 28px rgba(95, 143, 216, 0.18);
+}
+
+.gift-grid {
+  width: min(680px, 100%);
+
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+
+  margin: 26px auto;
+}
+
+.gift-box {
+  min-width: 0;
+  min-height: 132px;
+  padding: 14px 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border-radius: 18px;
+  line-height: 1.35;
+}
+
+.gift-box:disabled {
+  cursor: not-allowed;
+  filter: grayscale(0.55);
+  opacity: 0.55;
+}
+
+.gift-box.is-opened {
+  grid-column: span 2;
+  color: #24446f;
+  background: linear-gradient(135deg,
+      var(--white),
+      var(--pink),
+      var(--blue-light));
+  box-shadow: 0 14px 34px rgba(255, 214, 231, 0.55);
+}
+
+.gift-icon {
+  font-size: 2.2rem;
+  line-height: 1;
 }
 
 @keyframes heartPop {
@@ -375,7 +489,7 @@ button:hover {
   width: 400px;
   height: 400px;
 
-  background: #cfe8ff;
+  background: var(--pink);
 
   top: 20%;
   right: -150px;
@@ -414,8 +528,10 @@ button:hover {
   height: 100%;
 
   background: linear-gradient(90deg,
-      #a5d1fa,
-      #cfe8ff);
+      var(--blue),
+      var(--white),
+      var(--pink),
+      var(--blue-light));
 
   transition: width 0.4s ease;
 }
@@ -548,5 +664,30 @@ button:hover {
 
   .note-piece {
     min-width: 0;
+  }
+
+  .gift-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gift-box {
+    min-width: 0;
+    min-height: 112px;
+  }
+
+  .gift-box.is-opened {
+    grid-column: 1 / -1;
+  }
+
+  .music-player-button {
+    top: 58px;
+    right: 10px;
+
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    min-height: 42px;
+
+    font-size: 1rem;
   }
 }
